@@ -1,0 +1,12 @@
+{{> head }}
+<body class="bg-gray-50">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-center mt-10">Welcome to JAPZ GRILL POS</h1>
+    <p class="text-center mt-4">Counter &amp; Restaurant Operations</p>
+    <div class="text-center mt-6">
+      <a href="/login" class="inline-block bg-orange-600 text-white font-bold py-2 px-6 rounded">Sign in to Terminal</a>
+    </div>
+  </div>
+{{> footer }}
+</body>
+</html>

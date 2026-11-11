@@ -1,0 +1,31 @@
+<aside class="admin-sidebar cashier-sidebar">
+  <a class="sidebar-brand" href="/pos">
+    <img src="/images/japz-grill-logo-dark.png" alt="JAPZ GRILL Logo" class="sidebar-logo-img">
+  </a>
+  <nav class="sidebar-nav" aria-label="Cashier navigation">
+    <a class="sidebar-link {{#if (eq activeNav 'pos')}}active{{/if}}" href="/pos" title="New Order">
+      <span class="sidebar-icon">{{{iconPos}}}</span>
+      <span class="sidebar-label">New Order</span>
+    </a>
+    <a class="sidebar-link {{#if (eq activeNav 'orders')}}active{{/if}}" href="/orders" title="Transactions">
+      <span class="sidebar-icon">{{{iconOrders}}}</span>
+      <span class="sidebar-label">Transactions</span>
+    </a>
+    <a class="sidebar-link {{#if (eq activeNav 'history')}}active{{/if}}" href="/orders?status=completed" title="Order History">
+      <span class="sidebar-icon">{{{iconOrders}}}</span>
+      <span class="sidebar-label">Order History</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sidebar-user-pill">
+      <span class="online-dot">{{{iconOnline}}}</span>
+      <span class="sidebar-user-info">
+        <strong class="cashier-name">{{cashierName}}</strong>
+        <small class="cashier-role">Cashier</small>
+      </span>
+    </div>
+    <a class="sidebar-logout" href="/logout" title="Sign out">
+      {{{iconSignout}}}<span class="sidebar-label">Sign out</span>
+    </a>
+  </div>
+</aside>

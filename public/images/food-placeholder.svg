@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2520" />
+      <stop offset="100%" stop-color="#141815" />
+    </linearGradient>
+    <radialGradient id="flame" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5b041" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#e58e26" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="200" cy="140" r="90" fill="url(#flame)"/>
+  <g transform="translate(160, 95)" fill="none" stroke="#e58e26" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 10 45 Q 40 10 70 45 Z" fill="#e58e26" fill-opacity="0.2"/>
+    <line x1="8" y1="52" x2="72" y2="52"/>
+    <path d="M 12 60 Q 40 70 68 60"/>
+    <path d="M 10 70 Q 40 85 70 70" fill="#e58e26" fill-opacity="0.15"/>
+  </g>
+  <text x="200" y="215" fill="#f5b041" font-family="'DM Sans', sans-serif" font-size="13" font-weight="700" letter-spacing="2" text-anchor="middle">JAPZ GRILL</text>
+  <text x="200" y="235" fill="#889286" font-family="'DM Sans', sans-serif" font-size="10" letter-spacing="1" text-anchor="middle">BURGER &amp; BISTRO</text>
+</svg>

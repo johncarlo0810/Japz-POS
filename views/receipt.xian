@@ -1,0 +1,110 @@
+{{> head}}
+<body class="receipt-page">
+  <main class="receipt-wrap">
+    <div class="receipt-actions no-print">
+      <a href="/pos" class="btn-receipt-action secondary">{{{iconPlus}}} New Order</a>
+      <div class="action-buttons-group">
+        <a href="/kitchen" class="btn-receipt-action secondary">{{{iconKitchen}}} Kitchen</a>
+        <a href="/orders" class="btn-receipt-action secondary">{{{iconOrders}}} Orders</a>
+        <button type="button" class="btn-receipt-action primary" onclick="window.print()">
+          {{{iconPrint}}} Print Receipt
+        </button>
+      </div>
+    </div>
+
+    <article class="receipt">
+      <header class="receipt-brand">
+        <div class="receipt-logo-flame">{{{iconFlame}}}</div>
+        <h1>JAPZ GRILL</h1>
+        <p class="receipt-subtitle">BURGER &amp; BISTRO &middot; 100% PURE BEEF</p>
+        <div class="receipt-tagline">"Not your ordinary burger. We serve it GRILLED"</div>
+      </header>
+
+      <div class="receipt-meta-grid">
+        <div class="meta-item">
+          <span>Receipt / Order #</span>
+          <strong>{{order.orderNumber}}</strong>
+        </div>
+        <div class="meta-item right">
+          <span>Date &amp; Time</span>
+          <strong>{{order.formattedDate}}</strong>
+        </div>
+        <div class="meta-item">
+          <span>Cashier</span>
+          <strong>{{order.cashierName}}</strong>
+        </div>
+        <div class="meta-item right">
+          <span>Service Type</span>
+          <strong>
+            {{#if (eq order.orderType 'dine-in')}}Dine-in ({{order.tableNumber}}){{else}}Takeaway{{/if}}
+          </strong>
+        </div>
+        {{#if order.customerName}}
+        <div class="meta-item full">
+          <span>Customer / Note</span>
+          <strong>{{order.customerName}}</strong>
+        </div>
+        {{/if}}
+      </div>
+
+      <div class="receipt-divider"></div>
+
+      <div class="receipt-table-header">
+        <span class="col-item">QTY &middot; DESCRIPTION</span>
+        <span class="col-price">PRICE</span>
+        <span class="col-total">TOTAL</span>
+      </div>
+
+      <div class="receipt-lines">
+        {{#each order.OrderItems}}
+        <div class="receipt-item-row">
+          <div class="receipt-item-desc">
+            <strong class="receipt-qty">{{quantity}}&times;</strong>
+            <span class="receipt-name">{{productName}}</span>
+          </div>
+          <div class="receipt-item-price">&#8369;{{unitPrice}}</div>
+          <div class="receipt-item-line-total">&#8369;{{lineTotal}}</div>
+        </div>
+        {{/each}}
+      </div>
+
+      <div class="receipt-divider"></div>
+
+      <div class="receipt-totals-section">
+        <div class="receipt-summary-row">
+          <span>Subtotal</span>
+          <strong>&#8369;{{order.subtotal}}</strong>
+        </div>
+        <div class="receipt-summary-row grand-total">
+          <span>TOTAL AMOUNT</span>
+          <strong>&#8369;{{order.total}}</strong>
+        </div>
+      </div>
+
+      <div class="receipt-divider dashed"></div>
+
+      <div class="receipt-payment-section">
+        <div class="receipt-summary-row">
+          <span>Payment Method</span>
+          <strong>{{order.paymentMethod}}</strong>
+        </div>
+        <div class="receipt-summary-row">
+          <span>Amount Paid</span>
+          <strong>&#8369;{{order.amountPaid}}</strong>
+        </div>
+        <div class="receipt-summary-row change-row">
+          <span>CHANGE DUE</span>
+          <strong class="change-amount">&#8369;{{order.changeDue}}</strong>
+        </div>
+      </div>
+
+      <footer class="receipt-thanks">
+        <div class="barcode-mock">||||| | |||| |||||| || | |||| |||||</div>
+        <p class="thanks-msg">Thank you for dining with JAPZ GRILL!</p>
+        <small class="thanks-sub">Freshly flame-grilled upon order &middot; Please come again</small>
+      </footer>
+    </article>
+  </main>
+{{> footer}}
+</body>
+</html>

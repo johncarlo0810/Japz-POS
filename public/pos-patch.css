@@ -1,0 +1,4288 @@
+/* ============================================================
+   JAPZGRILL POS — ULTIMATE PROFESSIONAL UI & SVG ICON ENHANCEMENTS
+   ============================================================ */
+
+/* ── Universal SVG rule ───────────────────────────────────── */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ADMIN SIDEBAR LAYOUT
+   ══════════════════════════════════════════════════════════ */
+
+/* Admin shell = full-page horizontal row layout */
+body.admin-shell {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Sidebar — fixed width, 100vh height */
+.admin-sidebar {
+  width: 230px !important;
+  min-width: 230px !important;
+  max-width: 230px !important;
+  height: 100vh !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #111613 !important;
+  border-right: 1.5px solid #232d26 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  z-index: 100 !important;
+}
+
+/* Admin layout = occupies the full remaining width on the right */
+.admin-layout {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: calc(100vw - 230px) !important;
+  max-width: calc(100vw - 230px) !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background: var(--app-bg, #f4f6f9) !important;
+}
+
+/* Admin content fills the layout */
+.admin-content {
+  flex: 1 0 auto !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 28px 32px !important;
+}
+
+/* POS Terminal Screen inside Admin Layout */
+.admin-layout .pos-layout,
+.pos-layout.admin-pos-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 420px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.admin-layout .pos-layout .menu-panel {
+  height: 100vh !important;
+  overflow-y: auto !important;
+  padding: 24px 28px !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.admin-layout .pos-layout .cart-panel {
+  height: 100vh !important;
+  overflow-y: auto !important;
+  border-left: 1.5px solid var(--border-line) !important;
+  padding: 24px 20px !important;
+  flex-shrink: 0 !important;
+  width: 420px !important;
+  min-width: 420px !important;
+  box-sizing: border-box !important;
+}
+
+/* Hide footer in POS terminal & kitchen screens */
+.pos-layout ~ .app-footer,
+.kitchen-mode .app-footer,
+.admin-shell:has(.pos-layout) .app-footer,
+.admin-layout:has(.pos-layout) .app-footer,
+body:has(.pos-layout) .app-footer {
+  display: none !important;
+}
+
+/* Footer inside admin layout */
+.admin-layout .app-footer {
+  flex-shrink: 0 !important;
+  padding: 16px 32px !important;
+  border-top: 1px solid var(--border-line, rgba(0,0,0,0.08)) !important;
+  font-size: 11px !important;
+  text-align: center !important;
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* Override history-page & kds-layout centering inside sidebar layout */
+.admin-content.history-page,
+.admin-content.reports-page,
+.admin-layout .kds-layout,
+.kitchen-mode .kds-layout {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 28px 32px !important;
+  box-sizing: border-box !important;
+}
+
+/* Sidebar brand / logo */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid #222d25;
+  text-decoration: none !important;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-img {
+  width: 148px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: lighten;
+}
+
+/* Sidebar navigation links */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 10px;
+  overflow-y: auto;
+}
+
+.sidebar-link {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #9cb0a2 !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.sidebar-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.sidebar-link.active {
+  color: #ffffff !important;
+  background: rgba(229, 142, 38, 0.18) !important;
+  border-color: rgba(229, 142, 38, 0.4) !important;
+  font-weight: 700;
+}
+
+.sidebar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.sidebar-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.sidebar-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 10px 16px;
+  border-top: 1px solid #222d25;
+  flex-shrink: 0;
+}
+
+.sidebar-theme-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px !important;
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 8px !important;
+  color: #9cb0a2 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  justify-content: flex-start !important;
+}
+
+.sidebar-theme-btn:hover {
+  background: rgba(255,255,255,0.1) !important;
+  color: #fff !important;
+}
+
+.sidebar-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 8px 12px;
+  overflow: hidden;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.sidebar-user-info .cashier-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-user-info .cashier-role {
+  font-size: 11px;
+  color: #e58e26;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: #9cb0a2 !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.sidebar-logout:hover {
+  color: #ff6b6b !important;
+  background: rgba(255, 107, 107, 0.08);
+  border-color: rgba(255, 107, 107, 0.2);
+}
+
+/* ── Top Navigation Bar (Cashier only now) ─────────────────── */
+.topbar {
+  height: 70px;
+  background: #121714 !important;
+  border-bottom: 1.5px solid #222d25 !important;
+  padding: 0 28px !important;
+  gap: 28px !important;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-flame-icon {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 38px !important;
+  height: 38px !important;
+  background: linear-gradient(135deg, #e58e26 0%, #b83b10 100%) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-size: 0 !important;
+  box-shadow: 0 4px 14px rgba(229, 142, 38, 0.35) !important;
+}
+
+.brand-flame-icon svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px !important;
+  height: 40px !important;
+  padding: 0 14px !important;
+  border-radius: 6px !important;
+  color: #9cb0a2 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+  border: 1px solid transparent !important;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.nav-link.active {
+  color: #ffffff !important;
+  background: rgba(229, 142, 38, 0.18) !important;
+  border-color: rgba(229, 142, 38, 0.45) !important;
+  font-weight: 700 !important;
+}
+
+.nav-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 18px !important;
+  height: 18px !important;
+  font-size: 0 !important;
+}
+
+.nav-icon svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.top-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cashier-pill {
+  display: flex !important;
+  align-items: center;
+  gap: 9px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 30px !important;
+  padding: 5px 14px !important;
+}
+
+.online-dot {
+  background: none !important;
+  box-shadow: none !important;
+  width: 8px !important;
+  height: 8px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.online-dot svg {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.cashier-info {
+  display: flex !important;
+  flex-direction: column !important;
+  line-height: 1.2 !important;
+}
+
+.cashier-name {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+}
+
+.cashier-role {
+  font-size: 9px !important;
+  color: #8da392 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.logout-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px !important;
+  color: #9cb0a2 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.logout-link:hover {
+  color: #ff7675 !important;
+  background: rgba(255, 118, 117, 0.1) !important;
+}
+
+.logout-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Menu Search Box ──────────────────────────────────────── */
+.search-box {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: #ffffff !important;
+  border: 1.5px solid var(--border-line) !important;
+  border-radius: 8px !important;
+  padding: 0 14px !important;
+  height: 44px !important;
+  transition: border-color 0.15s !important;
+}
+
+.search-box:focus-within {
+  border-color: var(--brand-orange) !important;
+  box-shadow: 0 0 0 3px rgba(229, 142, 38, 0.12) !important;
+}
+
+.search-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted) !important;
+}
+
+.search-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.clear-search-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: none !important;
+  border: 0 !important;
+  cursor: pointer !important;
+  color: var(--text-muted) !important;
+  padding: 0 !important;
+}
+
+.clear-search-btn svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ── Product Card Add Button ──────────────────────────────── */
+.btn-add-item {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px !important;
+  background: var(--brand-dark) !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  padding: 7px 14px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.btn-add-item:hover {
+  background: var(--brand-orange) !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-add-item svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ── Order Type Switcher (Dine-in / Takeaway) ──────────────── */
+.order-type-switch {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6px !important;
+  background: #ebefe9 !important;
+  padding: 4px !important;
+  border-radius: 8px !important;
+}
+
+.type-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  padding: 9px 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.type-btn.active {
+  background: #ffffff !important;
+  color: var(--brand-dark) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+
+.type-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ── Payment Method Buttons ───────────────────────────────── */
+.payment-buttons {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+.pay-btn {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px !important;
+  background: #f4f6f2 !important;
+  border: 1.5px solid var(--border-line) !important;
+  border-radius: 6px !important;
+  padding: 10px 8px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  color: var(--text-secondary) !important;
+}
+
+.pay-btn:hover {
+  border-color: var(--brand-orange) !important;
+  color: var(--brand-orange) !important;
+}
+
+.pay-btn.active {
+  background: var(--brand-dark) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-dark) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+.pay-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ── Cart Empty State ─────────────────────────────────────── */
+.cart-empty {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 32px 16px !important;
+  text-align: center !important;
+  color: var(--text-muted) !important;
+}
+
+.cart-empty-circle {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  background: #f0f4f1 !important;
+  color: var(--brand-orange) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 10px !important;
+  font-size: 0 !important;
+}
+
+.cart-empty-circle svg {
+  width: 28px !important;
+  height: 28px !important;
+  stroke: var(--brand-orange) !important;
+}
+
+.cart-empty strong {
+  font-size: 13px !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 4px !important;
+}
+
+.cart-empty small {
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+}
+
+/* ── Cart Item Steppers & Remove Button ───────────────────── */
+.quantity-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.qty-btn {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--border-line) !important;
+  background: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  color: var(--brand-dark) !important;
+  transition: all 0.12s ease !important;
+  padding: 0 !important;
+}
+
+.qty-btn:hover {
+  background: var(--brand-orange) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-orange) !important;
+}
+
+.qty-btn svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.qty-number {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  min-width: 22px !important;
+  text-align: center !important;
+}
+
+.btn-remove-item {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 4px !important;
+  border: 0 !important;
+  background: transparent !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #e74c3c !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+}
+
+.btn-remove-item:hover {
+  background: #fde8e8 !important;
+  color: #c0392b !important;
+}
+
+.btn-remove-item svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* ── KDS Kitchen Tickets ──────────────────────────────────── */
+.kds-tool-btn,
+.ticket-btn,
+.ticket-done-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.ticket-type-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.ticket-time {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+/* ── Orders Page Toolbar & Table ──────────────────────────── */
+.orders-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  padding: 0 0 16px !important;
+}
+
+.search-box-inline {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 38px !important;
+  border: 1.5px solid var(--border-line) !important;
+  border-radius: 6px !important;
+  padding: 0 12px !important;
+  background: #ffffff !important;
+}
+
+.search-box-inline:focus-within {
+  border-color: var(--brand-orange) !important;
+}
+
+.search-box-inline svg {
+  width: 15px !important;
+  height: 15px !important;
+  color: var(--text-muted) !important;
+}
+
+.order-search-input {
+  border: 0 !important;
+  outline: 0 !important;
+  font-size: 12px !important;
+  width: 220px !important;
+  background: transparent !important;
+}
+
+.type-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.btn-step,
+.btn-complete-step,
+.receipt-link,
+.primary-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.btn-step-cancel {
+  background: #fff !important;
+  border: 1px solid #fad2d2 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-size: 10px !important;
+  color: #c0392b !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  font-weight: 700 !important;
+}
+
+.btn-step-cancel:hover {
+  background: #c0392b !important;
+  color: #ffffff !important;
+}
+
+/* ── Admin & Reports Section Icons ────────────────────────── */
+.section-title-inner {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.section-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(229, 142, 38, 0.1) !important;
+  border-radius: 6px !important;
+  color: var(--brand-orange) !important;
+  flex-shrink: 0 !important;
+}
+
+.section-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.metric-box-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: rgba(229, 142, 38, 0.1) !important;
+  border-radius: 6px !important;
+  color: var(--brand-orange) !important;
+  margin-bottom: 8px !important;
+}
+
+.metric-box-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.report-card-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: rgba(37, 107, 69, 0.1) !important;
+  border-radius: 6px !important;
+  color: var(--brand-green) !important;
+  margin-bottom: 10px !important;
+}
+
+.report-card-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.rank-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.rank-badge svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.thumb-cell {
+  width: 56px !important;
+  padding-right: 4px !important;
+}
+
+.admin-product-thumb {
+  width: 52px !important;
+  height: 40px !important;
+  object-fit: cover !important;
+  border-radius: 5px !important;
+  display: block !important;
+}
+
+/* ── Auth / Login Page ────────────────────────────────────── */
+.brand-badge {
+  font-size: 0 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.brand-badge svg {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.input-with-icon {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.input-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #6a7d70 !important;
+  font-size: 0 !important;
+}
+
+.input-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.auth-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  font-size: 14px !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.15s ease !important;
+}
+
+.auth-btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(229, 142, 38, 0.45) !important;
+}
+
+.auth-btn:active {
+  transform: translateY(0) !important;
+}
+
+.auth-btn-arrow {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.auth-btn-arrow svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.back-to-login {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: var(--brand-orange) !important;
+  font-weight: 700 !important;
+}
+
+/* ── JAPZ GRILL Professional Bistro Authentication (Always Dark & Centered) ── */
+.auth-page,
+body.auth-page,
+html[data-theme="light"] body.auth-page,
+html[data-theme="dark"] body.auth-page {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 32px 16px !important;
+  position: relative !important;
+  background: #0f1411 url('/images/bistro-bg.jpg') center center / cover no-repeat fixed !important;
+  color: #ffffff !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+}
+
+.auth-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at center 35%, rgba(15, 20, 17, 0.75) 0%, rgba(9, 12, 10, 0.94) 100%) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.auth-card,
+body.auth-page .auth-card,
+html[data-theme="light"] body.auth-page .auth-card,
+html[data-theme="dark"] body.auth-page .auth-card {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  background: rgba(18, 24, 20, 0.92) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1.5px solid rgba(229, 142, 38, 0.35) !important;
+  border-radius: 18px !important;
+  padding: 38px 34px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+
+.auth-brand-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 20px !important;
+  text-align: center !important;
+}
+
+.auth-brand-logo {
+  width: 170px !important;
+  max-width: 80% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.6)) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.auth-brand-logo:hover {
+  transform: scale(1.03) !important;
+}
+
+.auth-intro {
+  text-align: center !important;
+  margin-bottom: 22px !important;
+}
+
+.auth-tag {
+  display: inline-block !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  color: #e58e26 !important;
+  text-transform: uppercase !important;
+  background: rgba(229, 142, 38, 0.14) !important;
+  border: 1px solid rgba(229, 142, 38, 0.35) !important;
+  padding: 4px 14px !important;
+  border-radius: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.auth-intro h2,
+body.auth-page .auth-intro h2,
+html[data-theme="light"] body.auth-page .auth-intro h2 {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  margin: 6px 0 !important;
+  color: #ffffff !important;
+}
+
+.auth-desc,
+body.auth-page .auth-desc,
+html[data-theme="light"] body.auth-page .auth-desc {
+  font-size: 13px !important;
+  color: #9cb0a2 !important;
+  margin: 0 !important;
+}
+
+.auth-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.auth-card label,
+body.auth-page .auth-card label,
+html[data-theme="light"] body.auth-page .auth-card label {
+  display: block !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #cbd5e1 !important;
+  margin-bottom: 6px !important;
+}
+
+.auth-card .input-with-icon {
+  display: flex !important;
+  align-items: center !important;
+  height: 46px !important;
+  background: rgba(12, 16, 13, 0.85) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  padding: 0 12px !important;
+  gap: 10px !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.auth-card .input-with-icon:focus-within {
+  border-color: #e58e26 !important;
+  box-shadow: 0 0 0 3px rgba(229, 142, 38, 0.25) !important;
+}
+
+.auth-card .input-icon {
+  color: #e58e26 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.auth-card .input-with-icon input {
+  flex: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  height: 100% !important;
+  padding: 0 !important;
+}
+
+.auth-page .app-footer,
+html[data-theme="light"] body.auth-page .app-footer {
+  position: relative !important;
+  z-index: 2 !important;
+  margin-top: 24px !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 11px !important;
+  text-align: center !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* ── Admin Dashboard & Role Badge Styling ── */
+.badge-role-admin {
+  background: #e58e26;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-kpi-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border-line);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-orange);
+}
+
+.kpi-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(37, 107, 69, 0.12);
+  color: var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.kpi-icon-wrap.kpi-kitchen {
+  background: rgba(229, 142, 38, 0.12);
+  color: var(--brand-orange);
+}
+
+.kpi-icon-wrap.kpi-menu {
+  background: rgba(41, 128, 185, 0.12);
+  color: #2980b9;
+}
+
+.kpi-icon-wrap.kpi-staff {
+  background: rgba(142, 68, 173, 0.12);
+  color: #8e44ad;
+}
+
+.kpi-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kpi-val {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--brand-dark);
+  margin: 2px 0;
+}
+
+.kpi-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.kpi-link {
+  color: var(--brand-orange);
+  font-weight: 700;
+}
+
+.admin-quick-tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.admin-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--border-line);
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.admin-tab-btn:hover,
+.admin-tab-btn.active {
+  background: var(--brand-dark);
+  color: #fff;
+  border-color: var(--brand-dark);
+}
+
+.admin-tab-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.header-action-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--border-line);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.secondary-link:hover {
+  border-color: var(--brand-orange);
+  color: var(--brand-orange);
+}
+
+.admin-settings-card {
+  margin-top: 24px;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.settings-group {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-group h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--brand-dark);
+  border-bottom: 1.5px solid var(--border-line);
+  padding-bottom: 8px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.setting-key {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.setting-val {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ── Admin Dashboard Modules Grid ── */
+.admin-modules-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+.module-card {
+  background: var(--surface) !important;
+  border: 1.5px solid var(--border-line) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  text-decoration: none !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.18s ease !important;
+}
+
+.module-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: var(--brand-orange) !important;
+  box-shadow: 0 8px 24px rgba(229, 142, 38, 0.12) !important;
+}
+
+.module-icon {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  background: rgba(229, 142, 38, 0.12) !important;
+  color: var(--brand-orange) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.module-icon svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.module-info {
+  flex: 1 !important;
+}
+
+.module-info h3 {
+  margin: 0 0 4px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: var(--brand-dark) !important;
+}
+
+.module-info p {
+  margin: 0 !important;
+  font-size: 12px !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.4 !important;
+}
+
+.module-arrow {
+  font-size: 18px !important;
+  color: var(--brand-orange) !important;
+  font-weight: 800 !important;
+  transition: transform 0.15s ease !important;
+}
+
+.module-card:hover .module-arrow {
+  transform: translateX(4px) !important;
+}
+
+.admin-recent-card {
+  margin-top: 10px !important;
+}
+
+.items-summary-text {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ── Full Width Section & Grids ── */
+.full-width-section {
+  width: 100% !important;
+}
+
+.user-management-grid {
+  display: grid !important;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.4fr) !important;
+  gap: 24px !important;
+  align-items: start !important;
+}
+
+/* ── Unified & Bulletproof Admin Form Styles (Zero Overflow) ── */
+.admin-add-form,
+.staff-form {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 16px !important;
+  background: var(--surface-subtle, rgba(0, 0, 0, 0.02)) !important;
+  border: 1px solid var(--border-line, rgba(0, 0, 0, 0.08)) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 24px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.staff-grid-form {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px 16px !important;
+}
+
+@media (max-width: 768px) {
+  .staff-grid-form {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.admin-add-form label,
+.staff-form label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary, #64748b) !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.admin-add-form input,
+.admin-add-form select,
+.admin-select,
+.staff-form input,
+.staff-form select {
+  height: 42px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  border: 1.5px solid var(--border-line, #cbd5e1) !important;
+  border-radius: 8px !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  background: var(--input-bg, #ffffff) !important;
+  color: var(--text-main, #0f172a) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.admin-add-form input:focus,
+.admin-add-form select:focus,
+.staff-form input:focus {
+  outline: none !important;
+  border-color: #e58e26 !important;
+  box-shadow: 0 0 0 3px rgba(229, 142, 38, 0.2) !important;
+}
+
+.admin-add-form .wide-field {
+  grid-column: 1 / -1 !important;
+}
+
+.form-submit-row {
+  grid-column: 1 / -1 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  margin-top: 6px !important;
+  width: 100% !important;
+}
+
+.form-submit-row .btn-submit,
+.form-submit-row button {
+  height: 42px !important;
+  padding: 0 24px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.settings-page-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+}
+
+.settings-items-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.setting-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 0 !important;
+  border-bottom: 1px dashed var(--border-line) !important;
+}
+
+.setting-row:last-child {
+  border-bottom: 0 !important;
+}
+
+.setting-label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary) !important;
+}
+
+.setting-value {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--brand-dark) !important;
+}
+
+@media (max-width: 1100px) {
+  .admin-modules-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .settings-page-grid,
+  .user-management-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-modules-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- Admin Multi-Pane Navigation System --- */
+.admin-view-pane {
+  display: none;
+}
+.admin-view-pane.active-pane {
+  display: block;
+  animation: adminFadeIn 0.16s ease-out;
+}
+@keyframes adminFadeIn {
+  from {
+    opacity: 0.3;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   THEME SYSTEM: DUAL MODE (LIGHT & DARK MODE)
+   ========================================================================== */
+
+:root,
+html[data-theme="dark"] {
+  --app-bg: #111513 !important;
+  --surface-bg: #18201b !important;
+  --surface-elevated: #202b24 !important;
+  --card-bg: #1a221d !important;
+  --card-border: rgba(255, 255, 255, 0.08) !important;
+  --card-border-hover: rgba(229, 142, 38, 0.45) !important;
+  --text-main: #f3f6f4 !important;
+  --text-muted: #8d9a90 !important;
+  --text-sub: #b2c0b5 !important;
+  --border-subtle: rgba(255, 255, 255, 0.08) !important;
+  --table-border: rgba(255, 255, 255, 0.06) !important;
+  --input-bg: #131915 !important;
+  --input-border: rgba(255, 255, 255, 0.14) !important;
+  --chip-bg: rgba(255, 255, 255, 0.06) !important;
+  --topbar-bg: #121614 !important;
+}
+
+html[data-theme="light"] {
+  --app-bg: #f4f6f9 !important;
+  --surface-bg: #ffffff !important;
+  --surface-elevated: #ffffff !important;
+  --card-bg: #ffffff !important;
+  --card-border: #e2e8f0 !important;
+  --card-border-hover: rgba(229, 142, 38, 0.6) !important;
+  --text-main: #0f172a !important;
+  --text-muted: #64748b !important;
+  --text-sub: #475569 !important;
+  --border-subtle: #e2e8f0 !important;
+  --table-border: #e2e8f0 !important;
+  --input-bg: #ffffff !important;
+  --input-border: #cbd5e1 !important;
+  --chip-bg: #f1f5f9 !important;
+  --topbar-bg: #1e293b !important;
+}
+
+/* Base Body Application Theme */
+body.app-shell {
+  background-color: var(--app-bg) !important;
+  color: var(--text-main) !important;
+  transition: background-color 0.22s ease, color 0.22s ease;
+}
+
+/* Cards & Containers — NOT auth-card (login always dark) */
+.history-card,
+.admin-section,
+.admin-kpi-card,
+.module-card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  transition: background-color 0.22s ease, border-color 0.22s ease;
+}
+
+/* Auth card ALWAYS stays dark regardless of theme */
+.auth-card {
+  background: rgba(18, 24, 20, 0.90) !important;
+  border-color: rgba(229, 142, 38, 0.3) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+html[data-theme="light"] .auth-card {
+  background: rgba(18, 24, 20, 0.90) !important;
+  border-color: rgba(229, 142, 38, 0.35) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .history-card,
+html[data-theme="dark"] .admin-section,
+html[data-theme="dark"] .admin-kpi-card,
+html[data-theme="dark"] .module-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.page-heading h1,
+.section-title h2,
+.admin-kpi-card strong,
+.module-info h3,
+.setting-item strong,
+.setting-row strong,
+.orders-table td strong {
+  color: var(--text-main) !important;
+}
+
+.eyebrow,
+.page-heading .muted,
+.module-info p,
+.kpi-label,
+.kpi-sub,
+.setting-item label,
+.setting-label,
+.item-desc {
+  color: var(--text-muted) !important;
+}
+
+.orders-table th {
+  background: var(--chip-bg) !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid var(--table-border) !important;
+}
+
+.orders-table td {
+  border-bottom: 1px solid var(--table-border) !important;
+  color: var(--text-main) !important;
+}
+
+/* Topbar Theme Toggle Button */
+.theme-toggle-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 9px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #f1f5f9 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin-right: 6px !important;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(229, 142, 38, 0.22) !important;
+  border-color: rgba(229, 142, 38, 0.5) !important;
+  color: #ff9f43 !important;
+  transform: translateY(-1px) !important;
+}
+
+html[data-theme="dark"] .theme-icon-light {
+  display: none !important;
+}
+html[data-theme="dark"] .theme-icon-dark {
+  display: inline-flex !important;
+  color: #ff9f43 !important;
+}
+
+html[data-theme="light"] .theme-icon-dark {
+  display: none !important;
+}
+html[data-theme="light"] .theme-icon-light {
+  display: inline-flex !important;
+  color: #f59e0b !important;
+}
+
+/* ── Light mode sidebar overrides ───────────────────────── */
+html[data-theme="light"] .admin-sidebar {
+  background: #1e293b !important;
+  border-right-color: #334155 !important;
+}
+
+html[data-theme="light"] .sidebar-brand {
+  border-bottom-color: #334155 !important;
+}
+
+html[data-theme="light"] .sidebar-link {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] .sidebar-link:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.1) !important;
+}
+
+html[data-theme="light"] .sidebar-link.active {
+  color: #fff !important;
+  background: rgba(229,142,38,0.2) !important;
+  border-color: rgba(229,142,38,0.5) !important;
+}
+
+html[data-theme="light"] .sidebar-footer {
+  border-top-color: #334155 !important;
+}
+
+html[data-theme="light"] .sidebar-user-pill {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+html[data-theme="light"] .sidebar-theme-btn {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] .sidebar-logout {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] .admin-content {
+  background: var(--app-bg) !important;
+}
+
+/* JAPZ GRILL warm red-and-cream restaurant theme */
+:root {
+  --brand-orange: #c62822 !important;
+  --brand-orange-hover: #9f1e19 !important;
+  --brand-green: #b4231c !important;
+  --brand-green-hover: #921b16 !important;
+  --brand-amber: #f2a33a !important;
+  --border-focus: #c62822 !important;
+  --bg: #f5efea !important;
+  --surface-subtle: #fffaf7 !important;
+}
+
+html[data-theme="light"] {
+  --app-bg: #f5efea !important;
+  --surface-bg: #fffaf7 !important;
+  --surface-elevated: #ffffff !important;
+  --card-bg: #fffaf7 !important;
+  --card-border: #eadfd8 !important;
+  --card-border-hover: rgba(198, 40, 34, 0.45) !important;
+  --text-main: #251d1a !important;
+  --text-muted: #796c65 !important;
+  --text-sub: #554943 !important;
+  --border-subtle: #eadfd8 !important;
+  --table-border: #eee3dd !important;
+  --input-bg: #ffffff !important;
+  --input-border: #ddcec5 !important;
+  --chip-bg: #f6eeea !important;
+  --topbar-bg: #211815 !important;
+}
+
+body.app-shell {
+  background-color: var(--app-bg) !important;
+}
+
+.admin-sidebar,
+html[data-theme="light"] .admin-sidebar {
+  background: #1b1715 !important;
+  border-right-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+.sidebar-link.active,
+html[data-theme="light"] .sidebar-link.active {
+  background: #b9231d !important;
+  border-color: #d84a40 !important;
+}
+
+.sidebar-user-info .cashier-role {
+  color: #f1a36a !important;
+}
+
+.admin-kpi-card,
+.module-card,
+.history-card,
+.admin-section {
+  border-radius: 12px !important;
+}
+
+.admin-kpi-card {
+  background: var(--card-bg) !important;
+}
+
+.admin-kpi-card:hover,
+.module-card:hover {
+  border-color: #c62822 !important;
+}
+
+.kpi-link,
+.module-arrow,
+.section-icon {
+  color: #b4231c !important;
+}
+
+.kpi-icon-wrap,
+.kpi-icon-wrap.kpi-kitchen,
+.section-icon,
+.metric-box-icon {
+  color: #b4231c !important;
+  background: rgba(198, 40, 34, 0.1) !important;
+}
+
+.primary-link,
+.order-search-btn,
+.checkout-button,
+.btn-add-item,
+.ticket-btn.btn-prep,
+.ticket-btn.btn-ready,
+.ticket-btn.btn-complete,
+.admin-submit-btn {
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.primary-link:hover,
+.checkout-button:hover:not(:disabled),
+.btn-add-item:hover,
+.ticket-btn.btn-prep:hover,
+.ticket-btn.btn-ready:hover,
+.ticket-btn.btn-complete:hover {
+  background: #941b16 !important;
+  border-color: #941b16 !important;
+}
+
+.category-chip.selected,
+.type-btn.active,
+.pay-btn.active,
+.table-chip.selected {
+  color: #fff !important;
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.kitchen-mode h1,
+.kitchen-mode .page-heading h1 {
+  color: var(--text-main) !important;
+}
+
+.kitchen-mode .ticket-card {
+  color: #251d1a !important;
+  background: #fffaf7 !important;
+  border: 1px solid #eadfd8 !important;
+  border-top: 4px solid #c62822 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 22px rgba(39, 23, 18, 0.08) !important;
+}
+
+.kitchen-mode .ticket-header,
+.kitchen-mode .ticket-items,
+.kitchen-mode .ticket-footer,
+.kitchen-mode .ticket-item-name,
+.kitchen-mode .ticket-cashier-info {
+  color: #342923 !important;
+}
+
+.kitchen-mode .ticket-status-badge.pending {
+  color: #94500b !important;
+  background: #fff0d4 !important;
+  border-color: #f0be67 !important;
+}
+
+.kitchen-mode .ticket-status-badge.preparing {
+  color: #245c88 !important;
+  background: #e5f2fb !important;
+  border-color: #9cc9e8 !important;
+}
+
+.kitchen-mode .ticket-status-badge.ready {
+  color: #28743a !important;
+  background: #e4f4e5 !important;
+  border-color: #a4d5a5 !important;
+}
+
+.kitchen-mode .kds-filter-pill {
+  color: #554943 !important;
+  background: #fffaf7 !important;
+  border-color: #eadfd8 !important;
+}
+
+.kitchen-mode .kds-filter-pill.active {
+  color: #fff !important;
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.kitchen-mode .kds-empty-state {
+  color: #342923 !important;
+  background: #fffaf7 !important;
+  border-color: #eadfd8 !important;
+}
+
+html[data-theme="light"] .orders-table th {
+  background: #f4eae4 !important;
+}
+
+html[data-theme="light"] .auth-tag,
+html[data-theme="light"] .auth-card .input-icon,
+html[data-theme="light"] .auth-card .input-with-icon:focus-within {
+  color: #ee7664 !important;
+  border-color: rgba(198, 40, 34, 0.55) !important;
+}
+
+.auth-card,
+html[data-theme="light"] .auth-card {
+  border-color: rgba(198, 40, 34, 0.42) !important;
+}
+
+.auth-tag,
+html[data-theme="light"] .auth-tag {
+  color: #ff8a78 !important;
+  background: rgba(198, 40, 34, 0.16) !important;
+  border-color: rgba(220, 75, 62, 0.5) !important;
+}
+
+.auth-card .input-icon,
+html[data-theme="light"] .auth-card .input-icon {
+  color: #ee7664 !important;
+}
+
+.auth-card .input-with-icon:focus-within,
+html[data-theme="light"] .auth-card .input-with-icon:focus-within {
+  border-color: #dc4b3e !important;
+  box-shadow: 0 0 0 3px rgba(198, 40, 34, 0.22) !important;
+}
+
+.auth-btn {
+  background: #b9231d !important;
+}
+
+.auth-btn:hover {
+  background: #941b16 !important;
+  box-shadow: 0 6px 18px rgba(198, 40, 34, 0.36) !important;
+}
+
+.badge-role-admin {
+  background: #b9231d !important;
+}
+
+@media (max-width: 1100px) {
+  .admin-layout .pos-layout,
+  .pos-layout.admin-pos-content {
+    grid-template-columns: minmax(0, 1fr) 360px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .admin-sidebar,
+  html[data-theme="light"] .admin-sidebar {
+    width: 76px !important;
+    min-width: 76px !important;
+    max-width: 76px !important;
+  }
+
+  .sidebar-brand {
+    padding: 16px 8px !important;
+  }
+
+  .sidebar-logo-img {
+    width: 56px !important;
+  }
+
+  .sidebar-label,
+  .sidebar-user-info {
+    display: none !important;
+  }
+
+  .sidebar-link,
+  .sidebar-theme-btn,
+  .sidebar-logout {
+    justify-content: center !important;
+    padding: 11px 6px !important;
+  }
+
+  .sidebar-user-pill {
+    justify-content: center !important;
+    padding: 9px 6px !important;
+  }
+
+  .admin-layout {
+    width: calc(100vw - 76px) !important;
+    max-width: calc(100vw - 76px) !important;
+  }
+
+  .admin-layout .pos-layout,
+  .pos-layout.admin-pos-content {
+    grid-template-columns: minmax(0, 1fr) 320px !important;
+  }
+
+  .admin-content,
+  .admin-content.history-page,
+  .admin-content.reports-page,
+  .admin-layout .kds-layout,
+  .kitchen-mode .kds-layout {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  body.admin-shell {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+    flex-direction: column !important;
+  }
+
+  .admin-sidebar,
+  html[data-theme="light"] .admin-sidebar {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .sidebar-brand,
+  .sidebar-footer {
+    display: none !important;
+  }
+
+  .sidebar-nav {
+    flex: none !important;
+    flex-direction: row !important;
+    gap: 4px !important;
+    padding: 8px !important;
+    overflow-x: auto !important;
+  }
+
+  .sidebar-link,
+  .sidebar-link:hover {
+    min-width: max-content;
+    justify-content: center !important;
+    padding: 9px 11px !important;
+  }
+
+  .sidebar-label {
+    display: inline !important;
+  }
+
+  .admin-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: calc(100vh - 54px) !important;
+    overflow: visible !important;
+  }
+
+  .admin-content,
+  .admin-content.history-page,
+  .admin-content.reports-page,
+  .admin-layout .kds-layout,
+  .kitchen-mode .kds-layout {
+    padding: 16px !important;
+  }
+
+  .admin-layout .pos-layout,
+  .pos-layout.admin-pos-content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .admin-layout .pos-layout .menu-panel {
+    height: auto !important;
+    overflow: visible !important;
+    padding: 18px 16px 26px !important;
+  }
+
+  .admin-layout .pos-layout .cart-panel {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    border-left: 0 !important;
+    border-top: 1px solid var(--border-line) !important;
+    padding: 20px 16px !important;
+  }
+
+  .admin-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .admin-kpi-card {
+    padding: 14px 12px !important;
+    gap: 10px !important;
+  }
+
+  .kpi-icon-wrap {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .kpi-val {
+    font-size: 20px !important;
+  }
+}
+/* ==========================================================================
+   PROFESSIONAL SETTINGS PAGE STYLES
+   ========================================================================== */
+
+/* Theme Switcher in Settings */
+.theme-selector-wrap {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+  margin-top: 14px !important;
+}
+
+@media (max-width: 650px) {
+  .theme-selector-wrap {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.theme-card-option {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 16px !important;
+  border-radius: 12px !important;
+  border: 2px solid var(--border-subtle) !important;
+  background: var(--card-bg) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.theme-card-option:hover {
+  border-color: rgba(229, 142, 38, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+.theme-card-option.selected {
+  border-color: #e58e26 !important;
+  background: rgba(229, 142, 38, 0.05) !important;
+  box-shadow: 0 0 0 1px #e58e26 !important;
+}
+
+.theme-card-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 12px !important;
+}
+
+.theme-card-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--text-main) !important;
+}
+
+.theme-active-tag {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+  background: rgba(46, 204, 113, 0.15) !important;
+  color: #2ecc71 !important;
+  border: 1px solid rgba(46, 204, 113, 0.3) !important;
+}
+
+.theme-card-desc {
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+  color: var(--text-muted) !important;
+  margin: 0 !important;
+}
+
+.theme-preview-strip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 6px !important;
+  margin-top: 14px !important;
+}
+
+.theme-preview-strip.dark-strip {
+  background: #101412 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-preview-strip.light-strip {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.theme-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+}
+
+.theme-bar {
+  flex: 1 !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+}
+
+/* Professional Settings Metadata List */
+.settings-details-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-top: 14px !important;
+}
+
+.setting-item-pro {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 16px !important;
+  border-radius: 10px !important;
+  background: var(--chip-bg) !important;
+  border: 1px solid var(--border-subtle) !important;
+  transition: all 0.2s ease !important;
+}
+
+.setting-item-pro:hover {
+  border-color: var(--card-border-hover) !important;
+}
+
+.setting-item-left {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.setting-item-title {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
+}
+
+.setting-item-sub {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+}
+
+.setting-item-badge {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  background: rgba(229, 142, 38, 0.12) !important;
+  color: #e58e26 !important;
+  border: 1px solid rgba(229, 142, 38, 0.3) !important;
+}
+
+/* Professional Dining Tables Grid */
+.tables-pro-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 14px !important;
+  margin-top: 16px !important;
+}
+
+@media (max-width: 1000px) {
+  .tables-pro-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .tables-pro-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+.table-card-pro {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 18px 12px !important;
+  border-radius: 12px !important;
+  background: var(--chip-bg) !important;
+  border: 1px solid var(--border-subtle) !important;
+  text-align: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.table-card-pro:hover {
+  border-color: rgba(229, 142, 38, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+.table-icon-wrap {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(229, 142, 38, 0.12) !important;
+  color: #e58e26 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 2px !important;
+}
+
+.table-card-num {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  color: var(--text-main) !important;
+}
+
+.table-seats-badge {
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+  background: rgba(229, 142, 38, 0.1) !important;
+  color: #ff9f43 !important;
+  border: 1px solid rgba(229, 142, 38, 0.25) !important;
+}
+
+.table-status-indicator {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  color: #2ecc71 !important;
+  margin-top: 4px !important;
+}
+
+.table-status-indicator::before {
+  content: "" !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #2ecc71 !important;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.7) !important;
+}
+
+/* Cashier terminal styling inspired by the JAPZ GRILL reference */
+.admin-layout > .admin-content {
+  min-height: 0;
+  flex: 1 1 auto !important;
+}
+
+.admin-layout > .pos-layout.admin-pos-content {
+  height: calc(100vh - 146px) !important;
+  max-height: calc(100vh - 146px) !important;
+  min-height: 0;
+}
+
+.admin-layout > .pos-layout.admin-pos-content .menu-panel,
+.admin-layout > .pos-layout.admin-pos-content .cart-panel {
+  height: calc(100vh - 146px) !important;
+}
+
+.dashboard-page-heading {
+  margin-bottom: 18px !important;
+}
+
+.dashboard-page-heading h1,
+.kds-header h1 {
+  color: #251d1a !important;
+}
+
+.admin-kpi-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.dashboard-stat-card {
+  min-width: 0;
+  min-height: 106px;
+  padding: 17px !important;
+  border: 1px solid #eadfd8 !important;
+  background: #fffaf7 !important;
+}
+
+.dashboard-stat-card .kpi-val {
+  overflow-wrap: anywhere;
+}
+
+.stat-orders .kpi-icon-wrap {
+  color: #fff !important;
+  background: #bd2b25 !important;
+}
+
+.stat-revenue .kpi-icon-wrap {
+  color: #fff !important;
+  background: #211a18 !important;
+}
+
+.stat-queue .kpi-icon-wrap {
+  color: #fff !important;
+  background: #ef9b27 !important;
+}
+
+.dashboard-chart-card {
+  margin-bottom: 18px !important;
+  padding: 18px 20px !important;
+  border: 1px solid #eadfd8 !important;
+  background: #fffaf7 !important;
+}
+
+.dashboard-chart-card .section-title {
+  margin-bottom: 8px;
+}
+
+.dashboard-chart-card .section-title h2 {
+  margin: 0;
+}
+
+.chart-period-label {
+  padding: 6px 11px;
+  border: 1px solid #eadfd8;
+  border-radius: 7px;
+  color: #51443e;
+  background: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sales-chart-wrap {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.sales-chart {
+  display: block;
+  width: 100%;
+  height: 150px;
+  overflow: visible;
+}
+
+.sales-chart line {
+  stroke: #eee3dd;
+  stroke-width: 1;
+}
+
+.sales-chart polygon {
+  fill: rgba(198, 40, 34, 0.1);
+}
+
+.sales-chart polyline {
+  fill: none;
+  stroke: #c62822;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sales-chart circle {
+  fill: #c62822;
+  stroke: #fffaf7;
+  stroke-width: 2;
+}
+
+.sales-chart-labels {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  color: #796c65;
+  font-size: 11px;
+  text-align: center;
+}
+
+.admin-recent-card {
+  margin-top: 0 !important;
+  padding: 18px 20px !important;
+  border: 1px solid #eadfd8 !important;
+  background: #fffaf7 !important;
+}
+
+.admin-recent-card .section-title {
+  margin-bottom: 12px;
+}
+
+.admin-recent-card .orders-table th {
+  background: #f4eae4 !important;
+}
+
+.menu-panel > .page-heading {
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.menu-panel > .page-heading h1 {
+  font-size: 25px;
+}
+
+.menu-panel > .page-heading .eyebrow {
+  color: #b4231c !important;
+}
+
+.menu-tools {
+  margin-bottom: 16px;
+}
+
+.category-list {
+  gap: 7px;
+  overflow-x: auto;
+  padding: 3px 1px 5px;
+  flex-wrap: nowrap;
+}
+
+.category-chip {
+  flex: 0 0 auto;
+  border-color: #eadfd8;
+  color: #51443e;
+  background: #fffaf7;
+}
+
+.product-grid {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.product-card {
+  border: 1px solid #eadfd8 !important;
+  border-radius: 10px !important;
+  background: #fffaf7 !important;
+}
+
+.product-image-wrap {
+  height: 104px !important;
+  background: #f1e7e0 !important;
+}
+
+.product-content {
+  padding: 10px 11px 11px !important;
+}
+
+.product-description,
+.product-category-tag {
+  display: none !important;
+}
+
+.product-name {
+  min-height: 34px;
+  margin-bottom: 5px !important;
+  color: #251d1a !important;
+  font-size: 12px !important;
+}
+
+.product-bottom {
+  padding-top: 7px !important;
+}
+
+.product-price-text {
+  color: #251d1a !important;
+  font-size: 13px !important;
+}
+
+.btn-add-item {
+  padding: 6px 9px !important;
+  border-radius: 7px !important;
+  color: #fff !important;
+  font-size: 10px !important;
+}
+
+.cart-panel {
+  border-left: 1px solid #eadfd8 !important;
+  background: #fffaf7 !important;
+}
+
+.cart-heading h2 {
+  color: #251d1a;
+}
+
+.kitchen-mode .kds-layout {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.kds-header {
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px !important;
+}
+
+.kds-header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.kds-header .muted {
+  color: #796c65 !important;
+}
+
+.kds-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.kitchen-mode .ticket-card {
+  display: grid !important;
+  grid-template-columns: 78px minmax(0, 1fr) !important;
+  grid-template-rows: minmax(72px, 1fr) auto !important;
+  min-width: 0;
+  border: 1px solid #eadfd8 !important;
+  border-left: 0 !important;
+  background: #fffaf7 !important;
+}
+
+.kitchen-mode .ticket-header {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  padding: 10px 8px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 0 !important;
+  color: #fff !important;
+  background: #b9231d !important;
+  text-align: center;
+}
+
+.kitchen-mode .ticket-title-row,
+.kitchen-mode .ticket-meta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.kitchen-mode .ticket-title-row {
+  margin-bottom: 7px;
+}
+
+.kitchen-mode .ticket-num {
+  color: #fff !important;
+  font-size: 17px !important;
+  overflow-wrap: anywhere;
+}
+
+.kitchen-mode .ticket-status-badge {
+  padding: 3px 6px !important;
+  font-size: 8px !important;
+}
+
+.kitchen-mode .ticket-type-badge,
+.kitchen-mode .ticket-time {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 10px;
+  text-align: center;
+}
+
+.kitchen-mode .ticket-type-badge svg,
+.kitchen-mode .ticket-time svg {
+  display: none;
+}
+
+.kitchen-mode .ticket-customer-note {
+  color: #ffe0ad !important;
+  font-size: 9px;
+}
+
+.kitchen-mode .ticket-items {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 12px !important;
+  gap: 7px !important;
+  color: #342923 !important;
+}
+
+.kitchen-mode .ticket-item {
+  gap: 9px;
+  padding-bottom: 6px;
+  border-bottom-color: #eee3dd;
+}
+
+.kitchen-mode .ticket-qty-wrap {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  color: #b4231c;
+  background: #f7e7e2;
+}
+
+.kitchen-mode .ticket-qty {
+  font-size: 12px;
+}
+
+.kitchen-mode .ticket-item-name {
+  color: #342923 !important;
+  font-size: 12px !important;
+}
+
+.kitchen-mode .ticket-footer {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 9px 12px !important;
+  border-top: 1px solid #eee3dd !important;
+  background: #fffaf7 !important;
+}
+
+.kitchen-mode .ticket-cashier-info {
+  display: none;
+}
+
+.kitchen-mode .ticket-action-form {
+  gap: 6px;
+}
+
+.kitchen-mode .ticket-btn {
+  min-height: 37px;
+  height: auto;
+  padding: 7px 9px;
+  font-size: 11px;
+}
+
+.kitchen-mode .ticket-action-form .btn-cancel {
+  flex: 0 0 38px;
+  color: #b4231c;
+  background: #f8e9e5;
+}
+
+.kitchen-mode .kds-filter-pill {
+  padding: 7px 11px !important;
+  font-size: 11px !important;
+}
+
+.kitchen-mode .kds-empty-state {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1100px) {
+  .admin-layout > .pos-layout.admin-pos-content,
+  .admin-layout > .pos-layout.admin-pos-content .menu-panel,
+  .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+    height: calc(100vh - 146px) !important;
+    max-height: calc(100vh - 146px) !important;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .admin-layout > .pos-layout.admin-pos-content,
+  .admin-layout > .pos-layout.admin-pos-content .menu-panel,
+  .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+    height: calc(100vh - 132px) !important;
+    max-height: calc(100vh - 132px) !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-layout > .pos-layout.admin-pos-content {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+
+  .admin-layout > .pos-layout.admin-pos-content .menu-panel,
+  .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .admin-layout > .pos-layout.admin-pos-content .menu-panel {
+    padding: 16px !important;
+  }
+
+  .admin-kpi-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-stat-card {
+    min-height: 82px;
+  }
+
+  .admin-recent-card,
+  .dashboard-chart-card {
+    padding: 14px !important;
+  }
+
+  .kds-header {
+    align-items: flex-start !important;
+  }
+
+  .kds-stat-pills {
+    width: 100%;
+  }
+
+  .kds-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .menu-panel > .page-heading {
+    align-items: flex-start;
+  }
+
+  .menu-panel > .page-heading .service-badge {
+    display: none;
+  }
+}
+
+/* Cashier-only terminal layout */
+body.cashier-shell {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+  background: #f5efea !important;
+}
+
+.cashier-workspace {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.cashier-workspace > .admin-sidebar {
+  width: 112px !important;
+  min-width: 112px !important;
+  max-width: 112px !important;
+  height: auto !important;
+  min-height: 0;
+  overflow-y: auto !important;
+  background: #1b1715 !important;
+}
+
+.cashier-workspace .sidebar-brand {
+  padding: 14px 8px 12px !important;
+}
+
+.cashier-workspace .sidebar-logo-img {
+  width: 88px !important;
+}
+
+.cashier-workspace .sidebar-nav {
+  gap: 5px;
+  padding: 8px;
+}
+
+.cashier-workspace .sidebar-link {
+  min-height: 38px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 5px !important;
+  color: #eee1dc !important;
+  font-size: 10px;
+  text-align: center;
+  white-space: normal;
+}
+
+.cashier-workspace .sidebar-link.active {
+  background: #b9231d !important;
+  border-color: #d84a40 !important;
+}
+
+.cashier-workspace .sidebar-link .sidebar-label {
+  display: block;
+  line-height: 1.15;
+}
+
+.cashier-workspace .sidebar-footer {
+  padding: 9px 7px 12px;
+}
+
+.cashier-workspace .sidebar-user-pill {
+  justify-content: center;
+  padding: 7px 5px;
+}
+
+.cashier-workspace .sidebar-user-info {
+  display: none;
+}
+
+.cashier-workspace .sidebar-logout {
+  justify-content: center;
+  padding: 8px 5px;
+}
+
+.cashier-workspace .sidebar-logout .sidebar-label {
+  display: block;
+}
+
+.cashier-workspace > .admin-layout {
+  width: calc(100vw - 112px) !important;
+  max-width: calc(100vw - 112px) !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0;
+  overflow: hidden !important;
+}
+
+.cashier-workspace .admin-layout > .pos-layout.admin-pos-content {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 34%) !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  min-height: 0;
+  overflow: hidden !important;
+}
+
+.cashier-workspace .admin-layout > .pos-layout.admin-pos-content .menu-panel {
+  height: 100% !important;
+  min-height: 0;
+  padding: 20px 22px 24px !important;
+  overflow-y: auto !important;
+  background: #f7f1ed;
+}
+
+.cashier-workspace .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  min-height: 0;
+  padding: 18px !important;
+  overflow-y: auto !important;
+  border-left: 1px solid #eadfd8 !important;
+  background: #fffaf7 !important;
+}
+
+.cashier-workspace .menu-panel > .page-heading {
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.cashier-workspace .menu-panel > .page-heading h1 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.cashier-workspace .menu-panel > .page-heading .muted {
+  color: #796c65 !important;
+}
+
+.cashier-workspace .service-badge {
+  color: #28743a;
+  background: #fffaf7;
+}
+
+.cashier-workspace .menu-tools {
+  margin-bottom: 14px;
+}
+
+.cashier-workspace .category-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 2px 1px 5px;
+}
+
+.cashier-workspace .category-chip {
+  flex: 0 0 auto;
+  padding: 7px 11px;
+  border-color: #eadfd8;
+  border-radius: 7px;
+  color: #51443e;
+  background: #fffaf7;
+  font-size: 10px;
+}
+
+.cashier-workspace .category-chip.selected {
+  color: #fff !important;
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.cashier-workspace .product-grid {
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.cashier-workspace .product-card {
+  border: 1px solid #eadfd8 !important;
+  border-radius: 9px !important;
+  background: #fffaf7 !important;
+}
+
+.cashier-workspace .product-image-wrap {
+  height: clamp(86px, 11vw, 128px) !important;
+  background: #f1e7e0 !important;
+}
+
+.cashier-workspace .product-content {
+  padding: 9px 10px 10px !important;
+}
+
+.cashier-workspace .product-category-tag,
+.cashier-workspace .product-description {
+  display: none !important;
+}
+
+.cashier-workspace .product-name {
+  min-height: 31px;
+  margin-bottom: 4px !important;
+  color: #251d1a !important;
+  font-size: 12px !important;
+}
+
+.cashier-workspace .product-bottom {
+  padding-top: 6px !important;
+}
+
+.cashier-workspace .product-price-text {
+  color: #251d1a !important;
+  font-size: 12px !important;
+}
+
+.cashier-workspace .btn-add-item,
+.cashier-workspace .checkout-button {
+  color: #fff !important;
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.cashier-workspace .cart-heading h2 {
+  color: #251d1a;
+}
+
+.cashier-workspace .cart-panel .table-chip.selected,
+.cashier-workspace .cart-panel .type-btn.active,
+.cashier-workspace .cart-panel .pay-btn.active {
+  color: #fff !important;
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.cashier-workspace .cart-panel .total-highlight {
+  color: #251d1a;
+}
+
+@media (max-width: 850px) {
+  .cashier-shell .cashier-workspace > .admin-sidebar {
+    width: 76px !important;
+    min-width: 76px !important;
+    max-width: 76px !important;
+  }
+
+  .cashier-shell .cashier-workspace > .admin-layout {
+    width: calc(100vw - 76px) !important;
+    max-width: calc(100vw - 76px) !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content {
+    grid-template-columns: minmax(0, 1fr) minmax(265px, 38%) !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .menu-panel {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  body.cashier-shell {
+    height: auto !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .cashier-workspace {
+    min-height: 100vh;
+    overflow: visible;
+    flex-direction: column;
+  }
+
+  .cashier-shell .cashier-workspace > .admin-sidebar {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0;
+    overflow: visible !important;
+  }
+
+  .cashier-workspace .sidebar-brand,
+  .cashier-workspace .sidebar-footer {
+    display: none !important;
+  }
+
+  .cashier-workspace .sidebar-nav {
+    flex: none;
+    flex-direction: row;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 6px 8px !important;
+  }
+
+  .cashier-workspace .sidebar-link {
+    min-width: 128px;
+    min-height: 36px;
+    flex-direction: row;
+    padding: 8px 11px !important;
+    font-size: 11px;
+  }
+
+  .cashier-workspace > .admin-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .menu-panel,
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .menu-panel {
+    padding: 16px !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+    border-left: 0 !important;
+    border-top: 1px solid #eadfd8 !important;
+  }
+
+  .cashier-workspace .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Cashier POS layout aligned with the compact JAPZ GRILL counter reference. */
+.cashier-shell [hidden] {
+  display: none !important;
+}
+
+.cashier-workspace > .admin-sidebar {
+  width: 88px !important;
+  min-width: 88px !important;
+  max-width: 88px !important;
+  border-right: 1px solid #3c302b !important;
+}
+
+.cashier-workspace .sidebar-brand {
+  min-height: 82px;
+  padding: 9px 7px !important;
+}
+
+.cashier-workspace .sidebar-logo-img {
+  width: 62px !important;
+}
+
+.cashier-workspace .sidebar-nav {
+  align-items: stretch;
+  gap: 5px;
+  padding: 7px 5px;
+}
+
+.cashier-workspace .sidebar-link {
+  min-height: 34px;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 7px 6px !important;
+  font-size: 9px;
+  text-align: left;
+  white-space: normal;
+}
+
+.cashier-workspace .sidebar-link .sidebar-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.cashier-workspace .sidebar-label {
+  line-height: 1.15;
+}
+
+.cashier-workspace .sidebar-footer {
+  margin-top: auto;
+  padding: 7px 5px 10px;
+}
+
+.cashier-workspace .sidebar-logout {
+  min-height: 32px;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 7px 6px;
+  font-size: 9px;
+}
+
+.cashier-workspace > .admin-layout {
+  width: calc(100vw - 88px) !important;
+  max-width: calc(100vw - 88px) !important;
+}
+
+.cashier-workspace .admin-layout > .pos-layout.admin-pos-content {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 34%) !important;
+  background: #f7f2ef;
+}
+
+.cashier-workspace .admin-layout > .pos-layout.admin-pos-content .menu-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 16px 14px !important;
+  background: #fbf8f6;
+}
+
+.cashier-menu-header {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cashier-menu-header h1 {
+  margin: 0;
+  color: #201b19;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.cashier-menu-tools {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.menu-search-toggle {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+  color: #766b66;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.menu-search-toggle:hover {
+  color: #b9231d;
+  background: #f3e8e4;
+}
+
+.menu-search-toggle svg {
+  width: 15px;
+  height: 15px;
+}
+
+.cashier-identity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #332b27;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cashier-avatar {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  color: #714c40;
+  background: #ead9d0;
+  border-radius: 50%;
+}
+
+.cashier-avatar svg {
+  width: 13px;
+  height: 13px;
+}
+
+.cashier-search-box {
+  margin: 0;
+}
+
+.cashier-search-box input {
+  min-height: 34px;
+  font-size: 11px;
+}
+
+.cashier-category-list {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  margin: 0 !important;
+  overflow-x: auto;
+  padding: 0 0 2px;
+  scrollbar-width: none;
+}
+
+.cashier-category-list::-webkit-scrollbar {
+  display: none;
+}
+
+.cashier-category-list .category-chip {
+  flex: 0 0 auto;
+  min-height: 28px;
+  padding: 5px 8px;
+  border: 1px solid #eadfd9;
+  border-radius: 7px;
+  color: #433a36;
+  background: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cashier-category-list .category-chip.selected {
+  color: #fff !important;
+  background: #b9231d !important;
+  border-color: #b9231d !important;
+}
+
+.cashier-workspace .cashier-product-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  align-content: start;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  overflow-y: auto;
+  padding: 1px 2px 3px 1px;
+}
+
+.cashier-workspace .cashier-product-card {
+  min-width: 0;
+  border: 1px solid #ece1db !important;
+  border-radius: 9px !important;
+  background: #fff !important;
+  box-shadow: 0 2px 6px rgba(67, 45, 34, 0.06) !important;
+}
+
+.cashier-workspace .cashier-product-card:hover {
+  transform: translateY(-2px);
+  border-color: #d7aaa0 !important;
+  box-shadow: 0 5px 12px rgba(67, 45, 34, 0.1) !important;
+}
+
+.cashier-workspace .cashier-product-card.in-cart {
+  border-color: #c83d32 !important;
+}
+
+.cashier-workspace .cashier-product-card .product-image-wrap {
+  height: clamp(62px, 10vh, 105px) !important;
+  background: #f0e8e3 !important;
+}
+
+.cashier-workspace .cashier-product-card .product-photo {
+  object-fit: cover;
+}
+
+.cashier-workspace .cashier-product-card .product-content {
+  min-height: 50px;
+  padding: 5px 6px 6px !important;
+}
+
+.cashier-workspace .cashier-product-card .product-name {
+  display: -webkit-box;
+  min-height: 22px;
+  margin: 0 0 3px !important;
+  overflow: hidden;
+  color: #302824 !important;
+  font-size: 9px !important;
+  line-height: 1.15;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.cashier-workspace .cashier-product-card .product-bottom {
+  justify-content: center;
+  padding-top: 2px !important;
+  border: 0;
+}
+
+.cashier-workspace .cashier-product-card .product-price-text {
+  color: #322923 !important;
+  font-size: 9px !important;
+}
+
+.cashier-workspace .cashier-product-card .btn-add-item {
+  display: none !important;
+}
+
+.cashier-workspace .cashier-product-card .product-cart-badge {
+  top: 4px;
+  left: 4px;
+  padding: 2px 5px;
+  font-size: 8px;
+}
+
+.menu-promo-banner {
+  position: relative;
+  display: flex;
+  flex: 0 0 82px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  overflow: hidden;
+  padding: 10px 14px;
+  border-radius: 9px;
+  color: #fff;
+  background: linear-gradient(110deg, #281c17 0%, #492c21 60%, #8d4a2d 100%);
+}
+
+.menu-promo-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-promo-copy span {
+  color: #f1b08a;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.menu-promo-copy h2 {
+  margin: 3px 0 0;
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: clamp(14px, 2vw, 21px);
+  font-style: italic;
+  line-height: 1.05;
+}
+
+.menu-promo-banner img {
+  position: absolute;
+  right: 0;
+  bottom: -16px;
+  width: 47%;
+  height: 112%;
+  object-fit: cover;
+  object-position: center;
+  mask-image: linear-gradient(to right, transparent, #000 28%);
+}
+
+.cashier-workspace .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px 13px !important;
+  border-left: 1px solid #eadfd8 !important;
+  background: #fffdfc !important;
+}
+
+.cashier-workspace .cart-heading {
+  flex: 0 0 auto;
+  min-height: 29px;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0e8e4;
+}
+
+.cashier-workspace .cart-heading h2 {
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.cashier-workspace .cart-heading .text-button {
+  font-size: 9px;
+}
+
+.cashier-workspace .cart-items {
+  flex: 1 1 auto;
+  min-height: 90px;
+  max-height: none;
+  margin: 0;
+  border-top: 0;
+  border-bottom: 1px solid #f0e8e4;
+}
+
+.cashier-workspace .cart-empty {
+  min-height: 90px;
+}
+
+.cashier-workspace .cart-empty-circle {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 5px;
+}
+
+.cashier-workspace .cart-empty strong {
+  font-size: 10px;
+}
+
+.cashier-workspace .cart-empty small {
+  font-size: 9px;
+}
+
+.cashier-workspace .cart-item {
+  min-height: 43px;
+  gap: 7px;
+  padding: 5px 0;
+  border-bottom: 1px solid #f2ebe7;
+}
+
+.cart-item-image {
+  width: 31px;
+  height: 31px;
+  flex: 0 0 31px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f3eae4;
+}
+
+.cashier-workspace .cart-item-detail strong {
+  color: #332b27;
+  font-size: 9px;
+}
+
+.cashier-workspace .cart-item-detail small {
+  margin-top: 2px;
+  color: #80746e;
+  font-size: 8px;
+}
+
+.cashier-workspace .cart-item-end {
+  gap: 3px;
+}
+
+.cashier-workspace .cart-line-total {
+  color: #332b27;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.cashier-workspace .btn-remove-item {
+  width: 20px;
+  height: 24px;
+  padding: 0;
+  color: #c8332b;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.cashier-workspace .checkout-form {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cashier-workspace .cart-totals-box {
+  margin: 0;
+  padding: 1px 2px 5px;
+}
+
+.cashier-workspace .totals-row {
+  margin-bottom: 4px;
+  color: #645a55;
+  font-size: 9px;
+}
+
+.cashier-workspace .totals-row strong {
+  color: #332b27;
+}
+
+.cashier-workspace .totals-row.total-row {
+  align-items: center;
+  margin: 5px 0 0;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 8px;
+  color: #322824;
+  background: #f8e5e1;
+  font-size: 11px;
+}
+
+.cashier-workspace .totals-row.total-row .total-highlight {
+  font-size: 15px;
+}
+
+.cashier-workspace .order-type-container {
+  margin: 0;
+}
+
+.cashier-workspace .order-type-switch {
+  gap: 5px;
+  padding: 3px;
+  border: 0;
+  border-radius: 8px;
+  background: #f3eeeb;
+}
+
+.cashier-workspace .type-btn {
+  min-height: 30px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: #5f544f;
+  font-size: 9px;
+}
+
+.cashier-workspace .cart-panel .type-btn.active {
+  color: #fff !important;
+  background: #b9231d !important;
+  box-shadow: 0 2px 5px rgba(113, 28, 22, 0.16);
+}
+
+.cashier-workspace .table-selection-panel {
+  margin: 0;
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 7px;
+  background: #f8f4f1;
+}
+
+.cashier-workspace .table-selection-header {
+  margin-bottom: 4px;
+  font-size: 8px;
+}
+
+.cashier-workspace .table-pill {
+  padding: 2px 6px;
+  background: #b9231d;
+  font-size: 8px;
+}
+
+.cashier-workspace .table-chips {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.cashier-workspace .table-chip {
+  padding: 3px;
+  border-radius: 4px;
+  font-size: 8px;
+}
+
+.cashier-workspace .table-chip.selected {
+  color: #fff;
+  background: #b9231d;
+  border-color: #b9231d;
+}
+
+.cashier-workspace .customer-info-row {
+  margin: 0;
+}
+
+.cashier-workspace .customer-input {
+  height: 29px;
+  border-color: #ece3de;
+  font-size: 9px;
+}
+
+.proceed-payment-button,
+.cashier-workspace .checkout-button {
+  display: flex;
+  width: 100%;
+  min-height: 34px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 11px;
+  border: 1px solid #b9231d;
+  border-radius: 7px;
+  color: #fff;
+  background: #b9231d;
+  box-shadow: 0 3px 8px rgba(185, 35, 29, 0.17);
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.proceed-payment-button:hover:not(:disabled),
+.cashier-workspace .checkout-button:hover:not(:disabled) {
+  background: #991c17 !important;
+}
+
+.proceed-payment-button span {
+  font-size: 16px;
+  line-height: 10px;
+}
+
+.proceed-payment-button:disabled,
+.cashier-workspace .checkout-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+.cashier-workspace .payment-details {
+  padding-top: 8px;
+  border-top: 1px solid #f0e8e4;
+}
+
+.cashier-workspace .payment-method-group,
+.cashier-workspace .cash-fields-group {
+  margin-bottom: 8px;
+}
+
+.cashier-workspace .field-label {
+  margin-bottom: 5px;
+  font-size: 9px;
+}
+
+.cashier-workspace .payment-buttons {
+  gap: 4px;
+}
+
+.cashier-workspace .pay-btn,
+.cashier-workspace .quick-cash-btn {
+  min-height: 28px;
+  padding: 4px 6px;
+  font-size: 9px;
+}
+
+.cashier-workspace .quick-cash-row {
+  gap: 4px;
+  margin-bottom: 7px;
+}
+
+.cashier-workspace .money-input-box {
+  min-height: 32px;
+}
+
+.payment-action-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.back-to-order-button {
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #e8dcd5;
+  border-radius: 7px;
+  color: #554943;
+  background: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.payment-action-row .checkout-button {
+  flex: 1;
+  min-height: 34px;
+  height: auto;
+  margin: 0;
+}
+
+.payment-action-row .checkout-button .btn-price {
+  font-size: 9px;
+}
+
+.cashier-workspace .secure-note {
+  margin: 0;
+  color: #897b73;
+  font-size: 8px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .cashier-shell .cashier-workspace > .admin-sidebar {
+    width: 76px !important;
+    min-width: 76px !important;
+    max-width: 76px !important;
+  }
+
+  .cashier-workspace .sidebar-link {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 3px !important;
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .cashier-shell .cashier-workspace > .admin-layout {
+    width: calc(100vw - 76px) !important;
+    max-width: calc(100vw - 76px) !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content {
+    grid-template-columns: minmax(0, 1fr) minmax(265px, 38%) !important;
+  }
+}
+
+@media (max-width: 650px) {
+  body.cashier-shell {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 0 !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  .cashier-workspace .sidebar-link {
+    flex-direction: row;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 10px !important;
+    font-size: 10px;
+  }
+
+  .cashier-workspace {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex-direction: row !important;
+    overflow: hidden !important;
+  }
+
+  .cashier-shell .cashier-workspace > .admin-sidebar {
+    width: 88px !important;
+    min-width: 88px !important;
+    max-width: 88px !important;
+    height: 100% !important;
+    min-height: 0;
+    overflow-y: auto !important;
+  }
+
+  .cashier-workspace .sidebar-brand {
+    display: flex !important;
+    min-height: 62px;
+    padding: 6px 4px !important;
+  }
+
+  .cashier-workspace .sidebar-logo-img {
+    width: 56px !important;
+  }
+
+  .cashier-workspace .sidebar-nav {
+    flex: 1;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 5px 3px !important;
+    overflow: visible;
+  }
+
+  .cashier-workspace .sidebar-link {
+    min-width: 0;
+    min-height: 32px;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 6px 4px !important;
+    font-size: 7px;
+    text-align: left;
+  }
+
+  .cashier-workspace .sidebar-link .sidebar-icon svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .cashier-workspace .sidebar-label {
+    display: block !important;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal !important;
+  }
+
+  .cashier-workspace .sidebar-footer {
+    display: block !important;
+    padding: 4px 3px 6px;
+  }
+
+  .cashier-workspace .sidebar-logout {
+    min-height: 27px;
+    gap: 3px;
+    padding: 5px 4px !important;
+    font-size: 7px;
+  }
+
+  .cashier-workspace > .admin-layout {
+    width: calc(100vw - 88px) !important;
+    max-width: calc(100vw - 88px) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.55fr) minmax(124px, 0.95fr) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .menu-panel {
+    min-width: 0;
+    height: 100% !important;
+    min-height: 0;
+    gap: 6px;
+    padding: 8px 7px !important;
+    overflow: hidden !important;
+  }
+
+  .cashier-workspace .cashier-menu-header {
+    min-height: 24px;
+    gap: 4px;
+  }
+
+  .cashier-workspace .cashier-menu-header h1 {
+    font-size: 13px;
+  }
+
+  .cashier-workspace .cashier-menu-tools {
+    gap: 3px;
+  }
+
+  .cashier-workspace .menu-search-toggle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cashier-workspace .cashier-identity {
+    gap: 3px;
+    font-size: 7px;
+  }
+
+  .cashier-workspace .cashier-avatar {
+    width: 17px;
+    height: 17px;
+  }
+
+  .cashier-workspace .cashier-avatar svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .cashier-workspace .cashier-category-list {
+    gap: 1px;
+    overflow-x: auto;
+  }
+
+  .cashier-workspace .cashier-category-list .category-chip {
+    min-height: 20px;
+    padding: 1px 2px;
+    font-size: 6px;
+  }
+
+  .cashier-workspace .cashier-product-grid {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    overflow-y: auto;
+  }
+
+  .cashier-workspace .cashier-product-card .product-image-wrap {
+    height: clamp(38px, 11vh, 68px) !important;
+  }
+
+  .cashier-workspace .cashier-product-card .product-content {
+    min-height: 36px;
+    padding: 3px 3px 4px !important;
+  }
+
+  .cashier-workspace .cashier-product-card .product-name {
+    min-height: 17px;
+    margin-bottom: 1px !important;
+    font-size: 6px !important;
+  }
+
+  .cashier-workspace .cashier-product-card .product-price-text {
+    font-size: 7px !important;
+  }
+
+  .cashier-workspace .cashier-product-card .product-cart-badge {
+    font-size: 6px;
+  }
+
+  .cashier-workspace .menu-promo-banner {
+    flex-basis: 54px;
+    min-height: 54px;
+    padding: 5px 8px;
+  }
+
+  .cashier-workspace .menu-promo-copy span {
+    font-size: 5px;
+  }
+
+  .cashier-workspace .menu-promo-copy h2 {
+    font-size: 12px;
+  }
+
+  .cashier-workspace .menu-promo-banner img {
+    width: 45%;
+    height: 120%;
+  }
+
+  .cashier-workspace .admin-layout > .pos-layout.admin-pos-content .cart-panel {
+    display: flex;
+    width: auto !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    min-height: 0;
+    padding: 8px 6px !important;
+    gap: 5px;
+    overflow-y: auto !important;
+    border-top: 0 !important;
+    border-left: 1px solid #eadfd8 !important;
+  }
+
+  .cashier-workspace .cart-heading {
+    min-height: 22px;
+    padding-bottom: 5px;
+  }
+
+  .cashier-workspace .cart-heading h2 {
+    font-size: 9px;
+  }
+
+  .cashier-workspace .cart-heading .text-button {
+    font-size: 6px;
+  }
+
+  .cashier-workspace .cart-items {
+    min-height: 40px;
+  }
+
+  .cashier-workspace .cart-empty {
+    min-height: 40px;
+  }
+
+  .cashier-workspace .cart-empty-circle {
+    display: none;
+  }
+
+  .cashier-workspace .cart-empty strong {
+    font-size: 7px;
+  }
+
+  .cashier-workspace .cart-empty small {
+    font-size: 6px;
+  }
+
+  .cashier-workspace .cart-item {
+    min-height: 28px;
+    gap: 3px;
+    padding: 3px 0;
+  }
+
+  .cashier-workspace .cart-item-image {
+    width: 19px;
+    height: 19px;
+    flex-basis: 19px;
+    border-radius: 3px;
+  }
+
+  .cashier-workspace .cart-item-detail strong,
+  .cashier-workspace .cart-line-total {
+    font-size: 6px;
+  }
+
+  .cashier-workspace .cart-item-detail small {
+    font-size: 6px;
+  }
+
+  .cashier-workspace .btn-remove-item {
+    width: 12px;
+    height: 16px;
+    font-size: 10px;
+  }
+
+  .cashier-workspace .checkout-form {
+    gap: 4px;
+  }
+
+  .cashier-workspace .totals-row {
+    margin-bottom: 2px;
+    font-size: 7px;
+  }
+
+  .cashier-workspace .totals-row.total-row {
+    margin-top: 3px;
+    padding: 4px 5px;
+    font-size: 8px;
+  }
+
+  .cashier-workspace .totals-row.total-row .total-highlight {
+    font-size: 10px;
+  }
+
+  .cashier-workspace .type-btn {
+    min-width: 0;
+    min-height: 23px;
+    padding: 3px 1px;
+    font-size: 6px;
+    white-space: nowrap;
+  }
+
+  .cashier-workspace .order-type-switch {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+
+  .cashier-workspace .table-selection-panel {
+    padding: 4px;
+  }
+
+  .cashier-workspace .table-selection-header {
+    margin-bottom: 3px;
+    font-size: 6px;
+  }
+
+  .cashier-workspace .table-pill {
+    font-size: 6px;
+  }
+
+  .cashier-workspace .table-chips {
+    gap: 2px;
+  }
+
+  .cashier-workspace .table-chip {
+    padding: 2px 1px;
+    font-size: 6px;
+  }
+
+  .cashier-workspace .customer-input {
+    height: 23px;
+    padding: 0 5px;
+    font-size: 6px;
+  }
+
+  .cashier-workspace .proceed-payment-button,
+  .cashier-workspace .checkout-button {
+    min-height: 25px;
+    padding: 5px;
+    font-size: 7px;
+  }
+
+  .cashier-workspace .secure-note {
+    display: none;
+  }
+
+  .cashier-workspace .payment-method-group,
+  .cashier-workspace .cash-fields-group {
+    margin-bottom: 5px;
+  }
+
+  .cashier-workspace .pay-btn,
+  .cashier-workspace .quick-cash-btn {
+    min-height: 23px;
+    padding: 3px;
+    font-size: 7px;
+  }
+
+  .cashier-workspace .field-label {
+    font-size: 7px;
+  }
+
+  .cashier-workspace .money-input-box {
+    min-height: 25px;
+  }
+}
+
+@media (max-width: 390px) {
+  .cashier-shell .cashier-workspace > .admin-sidebar {
+    width: 62px !important;
+    min-width: 62px !important;
+    max-width: 62px !important;
+  }
+
+  .cashier-shell .cashier-workspace > .admin-layout {
+    width: calc(100vw - 62px) !important;
+    max-width: calc(100vw - 62px) !important;
+  }
+
+  .cashier-workspace .sidebar-label {
+    font-size: 6px;
+  }
+}
+
+.cashier-shell .success-alert {
+  display: none !important;
+}

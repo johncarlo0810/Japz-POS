@@ -1,0 +1,194 @@
+{{> head}}
+<body class="app-shell cashier-shell">
+  <div class="cashier-workspace">
+  {{> navbar}}
+  <div class="admin-layout">
+  <main class="pos-layout admin-pos-content">
+    <section class="menu-panel">
+      <header class="cashier-menu-header">
+        <h1>New Order</h1>
+        <div class="cashier-menu-tools">
+          <button type="button" class="menu-search-toggle" id="menu-search-toggle" aria-label="Search menu" aria-expanded="false">
+            {{{iconSearch}}}
+          </button>
+          <div class="cashier-identity">
+            <span class="cashier-avatar">{{{iconUser}}}</span>
+            <span>{{cashierName}}</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="search-box cashier-search-box" id="menu-search-panel" hidden>
+        <span class="search-icon">{{{iconSearch}}}</span>
+        <input id="menu-search" type="search" placeholder="Search menu..." autocomplete="off">
+        <button id="clear-search" type="button" class="clear-search-btn" hidden>{{{iconX}}}</button>
+      </div>
+
+      {{#if error_msg}}
+      <div class="alert error-alert">{{#each error_msg}}{{this}}{{/each}}</div>
+      {{/if}}
+      {{#if success_msg}}
+      <div class="alert success-alert">{{#each success_msg}}{{this}}{{/each}}</div>
+      {{/if}}
+
+      <div class="category-list cashier-category-list" id="category-list" aria-label="Menu categories">
+        {{#each categories}}
+        <button class="category-chip {{#if @first}}selected{{/if}}" type="button" data-category="{{this}}">{{this}}</button>
+        {{/each}}
+      </div>
+
+      <div class="product-grid cashier-product-grid" id="product-grid">
+        {{#each products}}
+        <article class="product-card cashier-product-card" data-id="{{id}}" data-name="{{name}}" data-price="{{price}}" data-image="{{image}}" data-category="{{menuGroup}}" data-search="{{name}} {{category}} {{description}}">
+          <div class="product-image-wrap">
+            <img class="product-photo" src="{{image}}" alt="{{name}}" loading="lazy" onerror="this.onerror=null;this.src='/images/food-placeholder.svg';">
+            <span class="product-cart-badge" id="badge-{{id}}" hidden>0 in cart</span>
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">{{name}}</h3>
+            <div class="product-bottom">
+              <strong class="product-price-text">&#8369;{{price}}</strong>
+              <button class="btn-add-item" type="button" aria-label="Add {{name}} to order">{{{iconPlus}}}</button>
+            </div>
+          </div>
+        </article>
+        {{else}}
+        <div class="empty-menu"><p>No active menu items available.</p></div>
+        {{/each}}
+      </div>
+
+      {{#if featuredProduct}}
+      <section class="menu-promo-banner">
+        <div class="menu-promo-copy">
+          <span>JAPZ GRILL</span>
+          <h2>Good Food<br>Good Mood</h2>
+        </div>
+        <img src="{{featuredProduct.image}}" alt="{{featuredProduct.name}}" loading="lazy" onerror="this.onerror=null;this.src='/images/food-placeholder.svg';">
+      </section>
+      {{/if}}
+    </section>
+
+    <aside class="cart-panel">
+      <div class="cart-heading">
+        <div>
+          <h2>Current Order</h2>
+        </div>
+        <button id="clear-cart" class="text-button" type="button">Clear Cart</button>
+      </div>
+
+      <div class="cart-items" id="cart-items">
+        <div class="cart-empty">
+          <div class="cart-empty-circle">{{{iconCart}}}</div>
+          <strong>Your order is empty</strong>
+          <small>Select items from the menu to begin.</small>
+        </div>
+      </div>
+
+      <form class="checkout-form" method="POST" action="/orders" id="checkout-form">
+        <input type="hidden" name="items" id="cart-payload" value="[]">
+        <input type="hidden" name="orderType" id="order-type-input" value="dine-in">
+        <input type="hidden" name="tableNumber" id="table-number-input" value="Table 01">
+        <input type="hidden" name="customerName" id="customer-name-payload" value="">
+
+        <div class="cart-totals-box">
+          <div class="totals-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">&#8369;0.00</strong>
+          </div>
+          <div class="totals-row">
+            <span>Discount</span>
+            <strong>&#8369;0.00</strong>
+          </div>
+          <div class="totals-row total-row">
+            <span>Total</span>
+            <strong id="total" class="total-highlight">&#8369;0.00</strong>
+          </div>
+        </div>
+
+        <div class="order-type-container">
+          <div class="order-type-switch" id="order-type-switch" aria-label="Order type">
+            <button type="button" class="type-btn active" data-type="dine-in">Dine-in</button>
+            <button type="button" class="type-btn" data-type="takeaway">Takeout</button>
+          </div>
+        </div>
+
+        <div class="table-selection-panel" id="table-selection-panel">
+          <div class="table-selection-header">
+            <span>Table</span>
+            <strong id="selected-table-label" class="table-pill">Table 01</strong>
+          </div>
+          <div class="table-chips" id="table-chips">
+            {{#each tables}}
+            <button type="button" class="table-chip {{#if @first}}selected{{/if}}" data-table="{{value}}">{{label}}</button>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="customer-info-row">
+          <input id="customer-name-input" type="text" placeholder="Customer name / note (optional)" class="customer-input" maxlength="100">
+        </div>
+
+        <button type="button" class="proceed-payment-button" id="payment-step-button" disabled>
+          Proceed to Payment <span>&rarr;</span>
+        </button>
+
+        <div class="payment-details" id="payment-details" hidden>
+          <div class="payment-method-group">
+            <label class="field-label">Payment Method</label>
+            <div class="payment-buttons" id="payment-buttons">
+              <button type="button" class="pay-btn active" data-method="cash">
+                <span class="pay-icon">{{{iconCash}}}</span> Cash
+              </button>
+              <button type="button" class="pay-btn" data-method="gcash">
+                <span class="pay-icon">{{{iconGcash}}}</span> GCash
+              </button>
+              <button type="button" class="pay-btn" data-method="card">
+                <span class="pay-icon">{{{iconCard}}}</span> Card
+              </button>
+            </div>
+            <input type="hidden" name="paymentMethod" id="payment-method" value="cash">
+          </div>
+
+          <div id="cash-fields" class="cash-fields-group">
+            <div class="quick-cash-row" id="quick-cash-row">
+              <button type="button" class="quick-cash-btn" data-value="exact">Exact</button>
+              <button type="button" class="quick-cash-btn" data-value="100">&#8369;100</button>
+              <button type="button" class="quick-cash-btn" data-value="200">&#8369;200</button>
+              <button type="button" class="quick-cash-btn" data-value="500">&#8369;500</button>
+              <button type="button" class="quick-cash-btn" data-value="1000">&#8369;1,000</button>
+            </div>
+
+            <label class="field-label" for="amount-paid">Cash Received</label>
+            <div class="money-input-box">
+              <span class="currency-symbol">&#8369;</span>
+              <input id="amount-paid" name="amountPaid" type="number" min="0" step="0.01" placeholder="0.00" inputmode="decimal">
+            </div>
+
+            <div class="change-display-box" id="change-display-box">
+              <span id="change-label">Change Due:</span>
+              <strong id="change-due" class="change-amount">&#8369;0.00</strong>
+            </div>
+          </div>
+
+          <div class="payment-action-row">
+            <button type="button" class="back-to-order-button" id="back-to-order">Back</button>
+            <button class="checkout-button" id="checkout-button" type="submit" disabled>
+              <span class="btn-text">Confirm Payment</span>
+              <span class="btn-price" id="charge-total">&#8369;0.00</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="secure-note">
+          Your order will be sent to the kitchen.
+        </p>
+      </form>
+    </aside>
+  </main>
+
+  <script src="/pos.js" defer></script>
+  {{> footer}}
+  </div><!-- /.admin-layout -->
+  </div><!-- /.cashier-workspace -->
+</body>
+</html>

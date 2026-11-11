@@ -1,0 +1,132 @@
+{{> head}}
+<body class="app-shell admin-shell kitchen-mode">
+  {{> navbar}}
+
+  <div class="admin-layout">
+  <main class="kds-layout admin-content">
+    <div class="kds-header">
+      <div>
+        <p class="eyebrow">KITCHEN STAFF &middot; LIVE QUEUE</p>
+        <h1>Kitchen <em>Orders</em></h1>
+        <p class="muted">Incoming orders refresh automatically. Update each order as it is prepared.</p>
+      </div>
+
+      <div class="kds-stat-pills">
+        <a href="/kitchen?filter=active" class="kds-filter-pill {{#if (eq currentFilter 'active')}}active{{/if}}">
+          Active: <strong>{{activeCounts.totalActive}}</strong>
+        </a>
+        <a href="/kitchen?filter=pending" class="kds-filter-pill pending {{#if (eq currentFilter 'pending')}}active{{/if}}">
+          New Orders: <strong>{{activeCounts.pending}}</strong>
+        </a>
+        <a href="/kitchen?filter=preparing" class="kds-filter-pill preparing {{#if (eq currentFilter 'preparing')}}active{{/if}}">
+          Preparing: <strong>{{activeCounts.preparing}}</strong>
+        </a>
+        <a href="/kitchen?filter=ready" class="kds-filter-pill ready {{#if (eq currentFilter 'ready')}}active{{/if}}">
+          Ready: <strong>{{activeCounts.ready}}</strong>
+        </a>
+        <a href="/kitchen?filter=completed" class="kds-filter-pill {{#if (eq currentFilter 'completed')}}active{{/if}}">
+          Completed
+        </a>
+      </div>
+    </div>
+
+    {{#if error_msg}}
+    <div class="alert error-alert">{{#each error_msg}}{{this}}{{/each}}</div>
+    {{/if}}
+    {{#if success_msg}}
+    <div class="alert success-alert">{{#each success_msg}}{{this}}{{/each}}</div>
+    {{/if}}
+
+    <div class="kds-grid">
+      {{#each orders}}
+      <div class="ticket-card status-{{status}} {{#if isUrgent}}ticket-urgent{{/if}}">
+        <div class="ticket-header">
+          <div class="ticket-title-row">
+            <span class="ticket-num">{{orderNumber}}</span>
+            <span class="ticket-status-badge {{status}}">{{status}}</span>
+          </div>
+          <div class="ticket-meta-row">
+            <span class="ticket-type-badge {{orderType}}">
+              {{#if (eq orderType "dine-in")}}
+              {{{iconDineIn}}} Dine-in &middot; {{tableNumber}}
+              {{else}}
+              {{{iconTakeaway}}} Takeaway
+              {{/if}}
+            </span>
+            <span class="ticket-time">{{{iconClock}}} {{formattedTime}} ({{elapsedText}})</span>
+          </div>
+          {{#if customerName}}
+          <div class="ticket-customer-note">Note: {{customerName}}</div>
+          {{/if}}
+        </div>
+
+        <div class="ticket-items">
+          {{#each OrderItems}}
+          <div class="ticket-item">
+            <div class="ticket-qty-wrap">
+              <span class="ticket-qty">{{quantity}}&times;</span>
+            </div>
+            <div class="ticket-item-info">
+              <strong class="ticket-item-name">{{productName}}</strong>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+
+        <div class="ticket-footer">
+          <div class="ticket-cashier-info">Cashier: {{cashierName}}</div>
+
+          <div class="ticket-action-bar">
+            {{#if (eq status "pending")}}
+            <form method="POST" action="/orders/{{id}}/status" class="ticket-action-form">
+              <button type="submit" name="status" value="preparing" class="ticket-btn btn-prep">
+                {{{iconKitchen}}} Start Preparing
+              </button>
+              <button type="submit" name="status" value="cancelled" class="ticket-btn btn-cancel" onclick="return confirm('Cancel this order?')">
+                {{{iconCancelX}}}
+              </button>
+            </form>
+            {{else if (eq status "preparing")}}
+            <form method="POST" action="/orders/{{id}}/status" class="ticket-action-form">
+              <button type="submit" name="status" value="ready" class="ticket-btn btn-ready">
+                {{{iconBell}}} Mark Food Ready
+              </button>
+              <button type="submit" name="status" value="cancelled" class="ticket-btn btn-cancel" onclick="return confirm('Cancel this order?')">
+                {{{iconCancelX}}}
+              </button>
+            </form>
+            {{else if (eq status "ready")}}
+            <form method="POST" action="/orders/{{id}}/status" class="ticket-action-form">
+              <button type="submit" name="status" value="completed" class="ticket-btn btn-complete">
+                {{{iconCheck}}} Food Served / Complete
+              </button>
+            </form>
+            {{else}}
+            <span class="ticket-done-tag">{{{iconCheck}}} Order Completed</span>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{else}}
+      <div class="kds-empty-state">
+        <div class="kds-empty-icon">{{{iconEmptyKitchen}}}</div>
+        <h2>All Caught Up!</h2>
+        <p>No tickets in this view. New confirmed orders from the POS appear here automatically.</p>
+        <a class="primary-link" href="/pos">Open POS Counter</a>
+      </div>
+      {{/each}}
+    </div>
+  </main>
+
+  <script>
+    setInterval(() => {
+      if (!document.querySelector('button:focus, input:focus')) {
+        window.location.reload();
+      }
+    }, 10000);
+  </script>
+
+  {{> footer}}
+  </div><!-- /.admin-layout -->
+</body>
+</html>

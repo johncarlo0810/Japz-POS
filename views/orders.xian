@@ -1,0 +1,126 @@
+{{> head}}
+<body class="app-shell admin-shell">
+  {{> navbar}}
+
+  <div class="admin-layout">
+  <main class="history-page admin-content">
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">JAPZGRILL &middot; TRANSACTIONS &amp; TRACKING</p>
+        <h1>Order <em>History.</em></h1>
+        <p class="muted">Search and monitor active kitchen tickets, completed sales, and receipts.</p>
+      </div>
+      <a class="primary-link" href="/pos">{{{iconPlus}}} New Order</a>
+    </div>
+
+    <div class="orders-toolbar">
+      <div class="status-tabs">
+        <a href="/orders" class="tab-chip {{#if (eq activeStatus 'all')}}selected{{/if}}">All ({{counts.all}})</a>
+        <a href="/orders?status=pending" class="tab-chip {{#if (eq activeStatus 'pending')}}selected{{/if}}">Pending ({{counts.pending}})</a>
+        <a href="/orders?status=preparing" class="tab-chip {{#if (eq activeStatus 'preparing')}}selected{{/if}}">Preparing ({{counts.preparing}})</a>
+        <a href="/orders?status=ready" class="tab-chip {{#if (eq activeStatus 'ready')}}selected{{/if}}">Ready ({{counts.ready}})</a>
+        <a href="/orders?status=completed" class="tab-chip {{#if (eq activeStatus 'completed')}}selected{{/if}}">Completed ({{counts.completed}})</a>
+        <a href="/orders?status=cancelled" class="tab-chip {{#if (eq activeStatus 'cancelled')}}selected{{/if}}">Cancelled ({{counts.cancelled}})</a>
+      </div>
+      <form method="GET" action="/orders" class="order-search-form">
+        {{#if (ne activeStatus 'all')}}
+        <input type="hidden" name="status" value="{{activeStatus}}">
+        {{/if}}
+        <div class="search-box-inline">
+          {{{iconSearch}}}
+          <input type="search" name="q" value="{{searchQuery}}" placeholder="Search by Order #, table, cashier..." class="order-search-input">
+        </div>
+        <button type="submit" class="order-search-btn">Search</button>
+      </form>
+    </div>
+
+    <section class="history-card">
+      {{#if error_msg}}<div class="alert error-alert">{{#each error_msg}}{{this}}{{/each}}</div>{{/if}}
+      {{#if success_msg}}<div class="alert success-alert">{{#each success_msg}}{{this}}{{/each}}</div>{{/if}}
+
+      {{#if orders}}
+      <div class="table-scroll">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>ORDER #</th>
+              <th>TYPE &amp; TABLE</th>
+              <th>ITEMS ORDERED</th>
+              <th>CASHIER</th>
+              <th>STATUS &amp; ACTION</th>
+              <th>PAYMENT</th>
+              <th>DATE &amp; TIME</th>
+              <th class="right-align">TOTAL</th>
+              <th>RECEIPT</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each orders}}
+            <tr>
+              <td>
+                <strong class="order-code">{{orderNumber}}</strong>
+                <small class="table-sub">ID #{{id}}</small>
+              </td>
+              <td>
+                <span class="type-pill">
+                  {{#if (eq orderType 'dine-in')}}
+                  {{{iconDineIn}}} {{tableNumber}}
+                  {{else}}
+                  {{{iconTakeaway}}} Takeaway
+                  {{/if}}
+                </span>
+                {{#if customerName}}<small class="table-sub">{{customerName}}</small>{{/if}}
+              </td>
+              <td class="items-cell">
+                <strong>{{OrderItems.length}} item(s)</strong>
+                <div class="items-list-preview">
+                  {{#each OrderItems}}<span>{{quantity}}&times; {{productName}}{{#unless @last}}, {{/unless}}</span>{{/each}}
+                </div>
+              </td>
+              <td><span class="cashier-badge-name">{{cashierName}}</span></td>
+              <td>
+                <span class="status-tag {{status}}">{{status}}</span>
+                <div class="status-action-row">
+                  {{#if (eq status "pending")}}
+                  <form class="status-form" method="POST" action="/orders/{{id}}/status">
+                    <button name="status" value="preparing" class="btn-step">Prep {{{iconArrow}}}</button>
+                    <button name="status" value="cancelled" class="btn-step-cancel" onclick="return confirm('Cancel this order?')">{{{iconCancelX}}}</button>
+                  </form>
+                  {{else if (eq status "preparing")}}
+                  <form class="status-form" method="POST" action="/orders/{{id}}/status">
+                    <button name="status" value="ready" class="btn-step">Ready {{{iconArrow}}}</button>
+                    <button name="status" value="cancelled" class="btn-step-cancel" onclick="return confirm('Cancel this order?')">{{{iconCancelX}}}</button>
+                  </form>
+                  {{else if (eq status "ready")}}
+                  <form class="status-form" method="POST" action="/orders/{{id}}/status">
+                    <button name="status" value="completed" class="btn-complete-step">{{{iconCheck}}} Serve</button>
+                  </form>
+                  {{/if}}
+                </div>
+              </td>
+              <td><span class="payment-tag payment-{{paymentMethod}}">{{paymentMethod}}</span></td>
+              <td class="date-cell">{{formattedDate}}</td>
+              <td class="right-align total-cell"><strong>&#8369;{{total}}</strong></td>
+              <td class="action-cell">
+                <a class="receipt-link" href="/orders/{{id}}">{{{iconPrint}}} Receipt</a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      {{else}}
+      <div class="history-empty">
+        <span class="empty-icon">{{{iconEmptyOrders}}}</span>
+        <h2>No Orders Found</h2>
+        <p>No orders matched your filter or search criteria.</p>
+        <a class="primary-link" href="/pos">Create New Order</a>
+      </div>
+      {{/if}}
+    </section>
+  </main>
+
+  {{> footer}}
+  </div><!-- /.admin-layout -->
+</body>
+</html>

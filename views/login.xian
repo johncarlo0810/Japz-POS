@@ -1,0 +1,47 @@
+{{> head}}
+<body class="auth-page">
+  <div class="auth-overlay"></div>
+  <main class="auth-card">
+    <div class="auth-brand-header">
+      <img src="/images/japz-grill-logo-dark.png" alt="JAPZ GRILL - Burger &amp; Bistro" class="auth-brand-logo" />
+    </div>
+
+    <div class="auth-intro">
+      <span class="auth-tag">TERMINAL ACCESS</span>
+      <h2>Sign in to your counter</h2>
+      <p class="auth-desc">Enter your cashier account to open the counter.</p>
+    </div>
+
+    {{#if error_msg}}
+    <div class="alert error-alert">{{#each error_msg}}{{this}}{{/each}}</div>
+    {{/if}}
+    {{#if success_msg}}
+    <div class="alert success-alert">{{#each success_msg}}{{this}}{{/each}}</div>
+    {{/if}}
+
+    <form class="auth-form" method="POST" action="/login">
+      <div class="form-group">
+        <label for="login-input">Username or Email</label>
+        <div class="input-with-icon">
+          <span class="input-icon">{{{iconUser}}}</span>
+          <input id="login-input" type="text" name="login" placeholder="Enter your cashier username" autocomplete="username" required autofocus />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password-input">Password</label>
+        <div class="input-with-icon">
+          <span class="input-icon">{{{iconLock}}}</span>
+          <input id="password-input" type="password" name="password" placeholder="Enter password" autocomplete="current-password" required />
+        </div>
+      </div>
+
+      <button type="submit" class="auth-btn">
+        <span>Log In</span>
+        <span class="auth-btn-arrow">{{{iconArrow}}}</span>
+      </button>
+    </form>
+  </main>
+{{> footer}}
+</body>
+</html>

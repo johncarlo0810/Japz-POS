@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#131714">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Playfair+Display:ital,wght@0,600..800;1,600..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/pos.css">
+  <link rel="stylesheet" href="/pos-patch.css">
+  <script>
+    (function() {
+      var savedTheme = localStorage.getItem('japz_pos_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.addEventListener('click', function(e) {
+          var btn = e.target.closest('#theme-toggle-btn');
+          if (!btn) return;
+          e.preventDefault();
+          var current = document.documentElement.getAttribute('data-theme') || 'dark';
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          try { localStorage.setItem('japz_pos_theme', next); } catch(err) {}
+          window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
+        });
+      });
+    })();
+  </script>
+  <title>{{ title }}</title>
+</head>
